@@ -5,22 +5,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Automa Lab - Our Projects</title>
+    <meta name="description" content="Research projects from Automa Lab: self-driving mini-cars, legged robots, and embodied AI.">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <header>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="team.html">Team</a>
-            <a href="projects.html" class="active">Projects</a>
-            <a href="contact.html">Contact Us</a>
-        </nav>
+        <div class="nav-wrap">
+            <a href="index.html" class="brand">
+                <img src="images/automa-lab-logo.png" alt="Automa Lab logo">
+                Automa Lab
+            </a>
+            <nav class="primary-nav">
+                <a href="index.html">Home</a>
+                <a href="team.html">Team</a>
+                <a href="projects.html" class="active">Projects</a>
+                <a href="news.html">News</a>
+                <a href="contact.html">Contact Us</a>
+            </nav>
+            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+            </button>
+        </div>
     </header>
 
     <main>
         <section class="projects">
-            <h1>Our Projects</h1>
+            <div class="page-head">
+                <span class="eyebrow">Our Work</span>
+                <h1>Our Projects</h1>
+                <p>Research initiatives spanning autonomous vehicles, legged robots, and embodied AI.</p>
+            </div>
 
             <div class="project featured-project">
                 <img src="images/weshare-minicar.png" alt="WeShare Mini-Car" class="project-image">
@@ -75,11 +90,32 @@
     </main>
 
     <footer>
-        <div class="footer-content">
-            <p>&copy; 2024 Automa Lab. All rights reserved.</p>
-            <!-- You can add more content here if needed -->
+        <div class="footer-inner">
+            <div class="footer-col">
+                <a href="index.html" class="footer-brand">
+                    <img src="images/automa-lab-logo.png" alt="Automa Lab logo">
+                    Automa Lab
+                </a>
+                <p>Advancing AI and Robotics through innovative, human-centered research.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <a href="team.html">Team</a>
+                <a href="projects.html">Projects</a>
+                <a href="news.html">News</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <a href="mailto:pltin@ntt.edu.vn">pltin@ntt.edu.vn</a>
+                <a href="contact.html">Get in Touch</a>
+            </div>
+        </div>
+        <div class="footer-bottom footer-content">
+            <p>&copy; 2026 Automa Lab. All rights reserved.</p>
         </div>
     </footer>
+
+    <script src="main.js"></script>
 </body>
 
 </html>

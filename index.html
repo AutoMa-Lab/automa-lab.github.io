@@ -5,17 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Automa Lab - Advancing AI and Robotics</title>
+    <meta name="description" content="Automa Lab conducts research in legged robots, self-driving vehicles, and embodied AI at Nguyen Tat Thanh University.">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <header>
-        <nav>
-            <a href="index.html" class="active">Home</a>
-            <a href="team.html">Team</a>
-            <a href="projects.html">Projects</a>
-            <a href="contact.html">Contact Us</a>
-        </nav>
+        <div class="nav-wrap">
+            <a href="index.html" class="brand">
+                <img src="images/automa-lab-logo.png" alt="Automa Lab logo">
+                Automa Lab
+            </a>
+            <nav class="primary-nav">
+                <a href="index.html" class="active">Home</a>
+                <a href="team.html">Team</a>
+                <a href="projects.html">Projects</a>
+                <a href="news.html">News</a>
+                <a href="contact.html">Contact Us</a>
+            </nav>
+            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+            </button>
+        </div>
     </header>
 
     <main>
@@ -24,15 +35,20 @@
                 <img src="images/automa-lab-logo.png" alt="Automa Lab Logo" class="logo">
                 <h1>Automa Lab</h1>
                 <p class="tagline">Advancing AI and Robotics through Innovative Research</p>
-                <a href="#mission" class="cta-button">Explore Our Mission</a>
+                <div class="hero-actions">
+                    <a href="#mission" class="btn btn-primary">Explore Our Mission</a>
+                    <a href="news.html" class="btn btn-ghost">Latest Research News</a>
+                </div>
             </div>
         </section>
 
         <section id="mission" class="mission">
             <div class="mission-content">
-                <h2>Our Mission</h2>
+                <span class="eyebrow">Our Mission</span>
+                <h2>Building intelligent systems for the real world</h2>
                 <p>At Automa Lab, we push the boundaries of robotics and AI to create intelligent systems that can
                     navigate complex environments and interact seamlessly with humans.</p>
+                <a href="team.html" class="btn btn-outline">Meet the Team</a>
             </div>
             <div class="mission-image">
                 <img src="images/robot-concept.jpg" alt="Advanced Robot Concept" class="robot-image">
@@ -40,30 +56,81 @@
         </section>
 
         <section id="research-areas" class="research-areas">
-            <h2>Our Research Areas</h2>
+            <div class="section-head">
+                <span class="eyebrow">What We Study</span>
+                <h2>Our Research Areas</h2>
+                <p>Three interconnected pillars driving our lab's research agenda.</p>
+            </div>
             <div class="research-grid">
                 <div class="research-item">
+                    <div class="research-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M6 22l2-8-4-3 5-1 3-6 3 6 5 1-4 3 2 8-6-4-6 4z"/></svg>
+                    </div>
                     <h3>Legged Robots</h3>
-                    <p>Developing advanced navigation algorithms for complex terrains.</p>
+                    <p>Developing advanced navigation algorithms for complex and uneven terrains.</p>
                 </div>
                 <div class="research-item">
+                    <div class="research-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="7" rx="2"/><path d="M5 11l1.5-5h11L19 11M8 18v2M16 18v2"/><circle cx="7.5" cy="14.5" r="1"/><circle cx="16.5" cy="14.5" r="1"/></svg>
+                    </div>
                     <h3>Self-Driving Cars</h3>
                     <p>Improving perception systems for autonomous vehicles in adverse conditions.</p>
                 </div>
                 <div class="research-item">
+                    <div class="research-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M9 8V5a3 3 0 016 0v3M9 14h.01M15 14h.01"/></svg>
+                    </div>
                     <h3>Embodied AI</h3>
-                    <p>Enhancing human-robot interaction in social settings.</p>
+                    <p>Enhancing human-robot interaction in social and collaborative settings.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="news-preview">
+            <div class="news-preview-inner">
+                <div class="section-head">
+                    <span class="eyebrow">Fresh From The Lab</span>
+                    <h2>Latest News</h2>
+                    <p>Publications, demos, and milestones from Automa Lab.</p>
+                </div>
+                <div class="empty-state">
+                    <h3>News updates coming soon</h3>
+                    <p>We're preparing our first research news posts. Check back shortly, or visit the News page.</p>
+                </div>
+                <div class="section-footer">
+                    <a href="news.html" class="btn btn-outline">View All News</a>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="footer-content">
-            <p>&copy; 2024 Automa Lab. All rights reserved.</p>
-            <!-- You can add more content here if needed -->
+        <div class="footer-inner">
+            <div class="footer-col">
+                <a href="index.html" class="footer-brand">
+                    <img src="images/automa-lab-logo.png" alt="Automa Lab logo">
+                    Automa Lab
+                </a>
+                <p>Advancing AI and Robotics through innovative, human-centered research.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <a href="team.html">Team</a>
+                <a href="projects.html">Projects</a>
+                <a href="news.html">News</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <a href="mailto:pltin@ntt.edu.vn">pltin@ntt.edu.vn</a>
+                <a href="contact.html">Get in Touch</a>
+            </div>
+        </div>
+        <div class="footer-bottom footer-content">
+            <p>&copy; 2026 Automa Lab. All rights reserved.</p>
         </div>
     </footer>
+
+    <script src="main.js"></script>
 </body>
 
 </html>

@@ -5,74 +5,158 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Automa Lab - Our Team</title>
+    <meta name="description" content="Meet the researchers and alumni of Automa Lab.">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <header>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="team.html" class="active">Team</a>
-            <a href="projects.html">Projects</a>
-            <a href="contact.html">Contact Us</a>
-        </nav>
+        <div class="nav-wrap">
+            <a href="index.html" class="brand">
+                <img src="images/automa-lab-logo.png" alt="Automa Lab logo">
+                Automa Lab
+            </a>
+            <nav class="primary-nav">
+                <a href="index.html">Home</a>
+                <a href="team.html" class="active">Team</a>
+                <a href="projects.html">Projects</a>
+                <a href="news.html">News</a>
+                <a href="contact.html">Contact Us</a>
+            </nav>
+            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+            </button>
+        </div>
     </header>
 
     <main>
         <section class="team">
-            <h1>Our Team</h1>
+            <div class="page-head">
+                <span class="eyebrow">The People</span>
+                <h1>Our Team</h1>
+                <p>The researchers and alumni behind Automa Lab's work in AI and robotics.</p>
+            </div>
 
-            <!-- <div class="leadership">
-                <div class="leader">
-                    <img src="images/dr-LuongTinPhan.png" alt="Dr. Luong Tin Phan" class="team-member-image">
-                    <h2>Dr. Luong Tin Phan</h2>
-                    <p>Director</p>
-                    <p>Expertise in Legged Robots, Self-Driving and Autonomous Vehicles and Embodied AI</p>
+            <div class="team-section">
+                <div class="team-section-head">
+                    <h2>Leadership</h2>
                 </div>
-                <div class="leader">
-                    <img src="images/dr-ChiThanhNguyen.jpg" alt="Dr. Chi Thanh Nguyen" class="team-member-image">
-                    <h2>Dr. Chi Thanh Nguyen</h2>
-                    <p>Co-Director</p>
-                    <p>Expertise in Computer Vision, Artificial Intelligence and Self-Driving Cars</p>
+                <div class="leadership">
+                    <div class="leader">
+                        <img src="images/dr-LuongTinPhan.png" alt="Dr. Luong Tin Phan" class="team-member-image">
+                        <span class="role-badge">Director</span>
+                        <h2>Dr. Luong Tin Phan</h2>
+                        <p>Expertise in Legged Robots, Self-Driving and Autonomous Vehicles and Embodied AI</p>
+                    </div>
+                    <div class="leader">
+                        <img src="images/dr-ChiThanhNguyen.jpg" alt="Dr. Chi Thanh Nguyen" class="team-member-image">
+                        <span class="role-badge">Co-Director</span>
+                        <h2>Dr. Chi Thanh Nguyen</h2>
+                        <p>Expertise in Computer Vision, Artificial Intelligence and Self-Driving Cars</p>
+                    </div>
                 </div>
-            </div> -->
+            </div>
 
-            <h2>Team Members</h2>
-            <div class="team-grid">
-                <div class="team-member">
-                    <img src="images/sv-huynhthuanphat.jpg" alt="Thuan Phat Huynh" class="team-member-image">
-                    <h3>Thuan Phat Huynh</h3>
-                    <p>Research Assistant</p>
-                    <p>Focus on Embedded Systems</p>
+            <div class="team-section">
+                <div class="team-section-head">
+                    <h2>Current Members</h2>
                 </div>
-                <div class="team-member">
-                    <img src="images/sv-huynhhoanghung.jpg" alt="Hoang Hung Huynh" class="team-member-image">
-                    <h3>Hoang Hung Huynh</h3>
-                    <p>Research Assistant</p>
-                    <p>Focus on Robotic Navigation</p>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="avatar-placeholder">LT</div>
+                        <span class="role-badge">Research Assistant</span>
+                        <h3>Le Van Ty</h3>
+                    </div>
+                    <div class="team-member">
+                        <div class="avatar-placeholder">LV</div>
+                        <span class="role-badge">Research Assistant</span>
+                        <h3>Le Quoc Viet</h3>
+                    </div>
+                    <div class="team-member">
+                        <div class="avatar-placeholder">OL</div>
+                        <span class="role-badge">Research Assistant</span>
+                        <h3>Ong Quy Lan</h3>
+                    </div>
+                    <div class="team-member">
+                        <div class="avatar-placeholder">NL</div>
+                        <span class="role-badge">Research Assistant</span>
+                        <h3>Nguyen Hoai Lam</h3>
+                    </div>
+                    <div class="team-member">
+                        <div class="avatar-placeholder">HT</div>
+                        <span class="role-badge">Research Assistant</span>
+                        <h3>Hoang Tra Minh Truong</h3>
+                    </div>
+                    <div class="team-member">
+                        <div class="avatar-placeholder">LC</div>
+                        <span class="role-badge">Research Assistant</span>
+                        <h3>Le Xuan Cuong</h3>
+                    </div>
                 </div>
-                <div class="team-member">
-                    <img src="images/sv-lydinhtu.jpg" alt="Dinh Tu Ly" class="team-member-image">
-                    <h3>Dinh Tu Ly</h3>
-                    <p>Research Assistant</p>
-                    <p>Focus on Human-Robot Interaction</p>
+            </div>
+
+            <div class="team-section">
+                <div class="team-section-head">
+                    <h2>Alumni</h2>
+                    <p>Former members now building their careers elsewhere.</p>
                 </div>
-                <div class="team-member">
-                    <img src="images/sv-huynhthanhnhan.jpg" alt="Thanh Nhan Bui" class="team-member-image">
-                    <h3>Thanh Nhan Bui</h3>
-                    <p>Research Assistant</p>
-                    <p>Focus on Computer Vision</p>
+                <div class="alumni-grid">
+                    <div class="team-member">
+                        <img src="images/sv-huynhthuanphat.jpg" alt="Thuan Phat Huynh" class="team-member-image">
+                        <span class="alumni-badge">Alumnus</span>
+                        <h3>Thuan Phat Huynh</h3>
+                        <p>Former focus: Embedded Systems</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="images/sv-huynhhoanghung.jpg" alt="Hoang Hung Huynh" class="team-member-image">
+                        <span class="alumni-badge">Alumnus</span>
+                        <h3>Hoang Hung Huynh</h3>
+                        <p>Former focus: Robotic Navigation</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="images/sv-lydinhtu.jpg" alt="Dinh Tu Ly" class="team-member-image">
+                        <span class="alumni-badge">Alumnus</span>
+                        <h3>Dinh Tu Ly</h3>
+                        <p>Former focus: Human-Robot Interaction</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="images/sv-huynhthanhnhan.jpg" alt="Thanh Nhan Bui" class="team-member-image">
+                        <span class="alumni-badge">Alumnus</span>
+                        <h3>Thanh Nhan Bui</h3>
+                        <p>Former focus: Computer Vision</p>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="footer-content">
-            <p>&copy; 2024 Automa Lab. All rights reserved.</p>
-            <!-- You can add more content here if needed -->
+        <div class="footer-inner">
+            <div class="footer-col">
+                <a href="index.html" class="footer-brand">
+                    <img src="images/automa-lab-logo.png" alt="Automa Lab logo">
+                    Automa Lab
+                </a>
+                <p>Advancing AI and Robotics through innovative, human-centered research.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <a href="team.html">Team</a>
+                <a href="projects.html">Projects</a>
+                <a href="news.html">News</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <a href="mailto:pltin@ntt.edu.vn">pltin@ntt.edu.vn</a>
+                <a href="contact.html">Get in Touch</a>
+            </div>
+        </div>
+        <div class="footer-bottom footer-content">
+            <p>&copy; 2026 Automa Lab. All rights reserved.</p>
         </div>
     </footer>
+
+    <script src="main.js"></script>
 </body>
 
 </html>
