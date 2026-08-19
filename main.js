@@ -4,12 +4,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (toggle && nav) {
         toggle.addEventListener('click', () => {
-            nav.classList.toggle('open');
-            toggle.setAttribute('aria-expanded', nav.classList.contains('open'));
+            const isOpen = nav.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         });
 
         nav.querySelectorAll('a').forEach((link) => {
-            link.addEventListener('click', () => nav.classList.remove('open'));
+            link.addEventListener('click', () => {
+                nav.classList.remove('open');
+                toggle.setAttribute('aria-expanded', 'false');
+            });
         });
     }
 });
