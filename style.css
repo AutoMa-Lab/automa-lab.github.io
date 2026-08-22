@@ -161,6 +161,7 @@ header {
     width: 36px;
     height: 36px;
     border-radius: 8px;
+    object-fit: cover;
 }
 
 nav.primary-nav {
@@ -1102,6 +1103,7 @@ footer {
     width: 32px;
     height: 32px;
     border-radius: 8px;
+    object-fit: cover;
 }
 
 .footer-col h4 {
