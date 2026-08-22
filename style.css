@@ -553,6 +553,29 @@ nav.primary-nav a.active {
     background: var(--color-dark);
 }
 
+.news-video-wrap img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.news-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    margin: 4px 0 16px;
+}
+
+.news-gallery img {
+    width: 100%;
+    height: 110px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+}
+
 .news-video {
     position: absolute;
     top: 0;
