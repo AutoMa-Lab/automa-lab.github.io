@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimal Pricing Model — Automa Lab</title>
+    <meta name="description" content="Interactive pricing model: discount, allowance and rebate budget for a distribution channel.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .px-wrap { max-width: var(--max-width); margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+        .px-lead { color: var(--color-text-muted); max-width: 760px; }
+        .px-panel { background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.4rem 1.5rem; margin-bottom: 1.5rem; box-shadow: var(--shadow-sm); }
+        .px-panel h2 { font-size: 1.05rem; text-transform: uppercase; letter-spacing: .08em; color: var(--color-text-muted); font-family: var(--font-body); font-weight: 700; margin-bottom: 1.1rem; }
+        .px-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: .9rem; }
+        .px-field label { display: block; font-size: .78rem; font-weight: 600; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: .35rem; }
+        .px-field input[type=number] { width: 100%; font: inherit; font-weight: 600; padding: .55rem .7rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: #fff; color: var(--color-text); }
+        .px-field input[type=number]:focus { outline: 2px solid var(--color-primary); outline-offset: 1px; border-color: var(--color-primary); }
+        .px-out { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: .9rem; margin-top: 1.2rem; }
+        .px-stat { background: var(--color-surface); border-radius: var(--radius-sm); padding: .8rem 1rem; border-left: 3px solid var(--color-primary); }
+        .px-stat.cap { border-left-color: #e11d48; background: #fff7f8; }
+        .px-stat .k { font-size: .76rem; font-weight: 600; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: .05em; }
+        .px-stat .v { font-size: 1.3rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+        .px-formula { display: flex; flex-wrap: wrap; gap: 1.4rem 2.2rem; }
+        .px-formula div { font-size: .95rem; }
+        .px-formula b { color: var(--color-primary); }
+        .px-formula span { color: var(--color-text-muted); }
+        table.px-table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+        table.px-table th { font-size: .72rem; text-transform: uppercase; letter-spacing: .04em; color: var(--color-text-muted); text-align: center; padding: .5rem .4rem; border-bottom: 1px solid var(--color-border); font-weight: 700; }
+        table.px-table th:first-child, table.px-table th:nth-child(2) { text-align: left; }
+        table.px-table td { font-size: .88rem; text-align: center; padding: .55rem .4rem; border-bottom: 1px solid var(--color-surface-alt); }
+        table.px-table td:first-child { text-align: left; font-weight: 700; }
+        table.px-table td.q { text-align: left; }
+        table.px-table tr.bad td { background: #fff7f8; }
+        table.px-table tr.bad td:first-child { color: #e11d48; }
+        .px-slider { width: 88px; }
+        .px-slider input[type=range] { width: 100%; accent-color: var(--color-primary); }
+        .px-slider .val { font-size: .8rem; font-weight: 700; color: var(--color-text); }
+        .px-bar { height: 6px; border-radius: 3px; background: var(--color-surface-alt); position: relative; margin-top: .35rem; min-width: 70px; }
+        .px-bar i { position: absolute; inset: 0 auto 0 0; border-radius: 3px; background: var(--color-primary); }
+        .px-bar i.hot { background: #e11d48; }
+        .px-bar i.near { background: #d97706; }
+        .px-flag { font-size: .76rem; font-weight: 700; }
+        .px-flag.ok { color: #059669; }
+        .px-flag.no { color: #e11d48; }
+        .px-alert { display: none; margin: 1.1rem 0 0; padding: .8rem 1rem; border-radius: var(--radius-sm); background: #fff7f8; border-left: 3px solid #e11d48; font-size: .9rem; }
+        .px-alert.show { display: block; }
+        .px-actions { display: flex; gap: .7rem; flex-wrap: wrap; margin-top: 1.2rem; }
+        .px-note { font-size: .84rem; color: var(--color-text-muted); margin-top: .9rem; }
+        @media (max-width: 720px) { .px-scroll { overflow-x: auto; } table.px-table { min-width: 760px; } }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="nav-wrap">
+            <a href="index.html" class="brand">
+                <img src="images/automa-lab-logo.png" alt="Automa Lab logo">
+                Automa Lab
+            </a>
+            <nav class="primary-nav" id="primary-nav">
+                <a href="index.html">Home</a>
+                <a href="team.html">Team</a>
+                <a href="projects.html">Projects</a>
+                <a href="news.html">News</a>
+                <a href="pricing.html" class="active">Pricing Model</a>
+                <a href="contact.html">Contact Us</a>
+            </nav>
+            <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-controls="primary-nav" aria-expanded="false">
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <div class="px-wrap">
+            <span class="eyebrow">Interactive Model</span>
+            <h1>Bài toán giá tối ưu — Discount · Allowance · Rebate</h1>
+            <p class="px-lead">Một công ty bán sản phẩm với giá niêm yết <b>L</b> và giá vốn <b>C</b>, phải đạt lãi tối
+                thiểu <b>&pi;<sub>min</sub></b> trên mỗi đơn vị. Kéo các thanh trượt để phân bổ ngân sách nhượng bộ
+                giữa ba cấu phần và xem ngay công ty còn lãi hay không.</p>
+
+            <section class="px-panel">
+                <h2>1 · Dữ liệu đầu vào</h2>
+                <div class="px-grid">
+                    <div class="px-field"><label for="in-L">L — giá niêm yết (đ/đv)</label><input id="in-L" type="number" step="100000" value="14000000"></div>
+                    <div class="px-field"><label for="in-C">C — giá vốn (đ/đv)</label><input id="in-C" type="number" step="100000" value="12000000"></div>
+                    <div class="px-field"><label for="in-P">&pi;<sub>min</sub> — lãi tối thiểu (đ/đv)</label><input id="in-P" type="number" step="50000" value="750000"></div>
+                </div>
+                <div class="px-out">
+                    <div class="px-stat"><div class="k">P<sub>min</sub> = C + &pi;<sub>min</sub> — sàn giá phân phối</div><div class="v" id="out-pmin">—</div></div>
+                    <div class="px-stat"><div class="k">N<sub>max</sub> = L &minus; P<sub>min</sub> — ngân sách nhượng bộ</div><div class="v" id="out-nmax">—</div></div>
+                    <div class="px-stat cap"><div class="k">d<sub>max</sub> = N<sub>max</sub> / L — trần tổng nhượng bộ</div><div class="v" id="out-dmax">—</div></div>
+                    <div class="px-stat"><div class="k">m<sub>min</sub> = &pi;<sub>min</sub> / P<sub>min</sub> — biên lợi nhuận tối thiểu</div><div class="v" id="out-mmin">—</div></div>
+                </div>
+                <div class="px-note">Công thức gốc: P<sub>min</sub> = C + &pi;<sub>min</sub> &nbsp;·&nbsp; d<sub>max</sub> = (L &minus; C &minus; &pi;<sub>min</sub>) / L &nbsp;·&nbsp; tương đương G = TCP / (1 &minus; m%)</div>
+            </section>
+
+            <section class="px-panel">
+                <h2>2 · Ba cấu phần</h2>
+                <div class="px-formula">
+                    <div><b>Discount · D</b><br><span>Trừ ngay trên hóa đơn theo vị trí kênh &amp; sản lượng</span></div>
+                    <div><b>Allowance · A</b><br><span>Bù chi phí đại lý tự làm: trưng bày, vận chuyển, bảo hành</span></div>
+                    <div><b>Rebate · R</b><br><span>Trả sau kỳ khi đạt chỉ tiêu — quyết toán cuối quý</span></div>
+                </div>
+                <div class="px-note">Thứ tự trừ: P<sub>inv</sub> = L·(1 &minus; D &minus; A) rồi P<sub>net</sub> = P<sub>inv</sub>·(1 &minus; R). Vì R áp lên phần còn lại,
+                    tổng nhượng bộ thực luôn nhỏ hơn D + A + R.</div>
+            </section>
+
+            <section class="px-panel">
+                <h2>3 · Bảng 5 bậc — kéo để chỉnh</h2>
+                <div class="px-scroll">
+                    <table class="px-table">
+                        <thead>
+                            <tr>
+                                <th>Bậc</th><th>Sản lượng quý</th><th>D</th><th>A</th><th>R</th>
+                                <th>D+A+R<br>danh nghĩa</th><th>&Delta;<sub>eff</sub> thực</th><th>P<sub>net</sub><br>thực nhận</th>
+                                <th>&pi; /đv</th><th>m</th><th>Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody id="px-body"></tbody>
+                    </table>
+                </div>
+                <div class="px-alert" id="px-alert"></div>
+                <div class="px-actions">
+                    <button type="button" class="btn btn-primary" id="px-reset">Reset về đề xuất</button>
+                    <button type="button" class="btn btn-outline" id="px-max">Dùng hết trần (R max)</button>
+                </div>
+                <div class="px-note">Thanh ngang = &Delta;<sub>eff</sub> so với trần d<sub>max</sub>. Xanh &lt; 85% trần · cam ≥ 85% · đỏ = vượt trần.</div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-col">
+                <a href="index.html" class="footer-brand">
+                    <img src="images/automa-lab-logo.png" alt="Automa Lab logo">
+                    Automa Lab
+                </a>
+                <p>Advancing AI and Robotics through innovative, human-centered research.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <a href="team.html">Team</a>
+                <a href="projects.html">Projects</a>
+                <a href="news.html">News</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <a href="mailto:pltin@ntt.edu.vn">pltin@ntt.edu.vn</a>
+                <a href="contact.html">Get in Touch</a>
+            </div>
+        </div>
+        <div class="footer-bottom footer-content">
+            <p>&copy; 2026 Automa Lab. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        const DEFAULTS = {
+            L: 14000000, C: 12000000, pi: 750000,
+            tiers: [
+                { q: '< 50 tấn', D: 0.5, A: 0.5, R: 1.0 },
+                { q: '50 – 100 tấn', D: 1.0, A: 0.5, R: 1.5 },
+                { q: '100 – 200 tấn', D: 1.5, A: 0.5, R: 2.5 },
+                { q: '200 – 500 tấn', D: 2.0, A: 1.0, R: 3.0 },
+                { q: '> 500 tấn', D: 3.0, A: 1.5, R: 3.5 }
+            ]
+        };
+        const vnd = n => Math.round(n).toLocaleString('vi-VN') + 'đ';
+        const pct = n => n.toFixed(2).replace('.', ',') + '%';
+        const model = () => {
+            const L = +document.getElementById('in-L').value || 0;
+            const C = +document.getElementById('in-C').value || 0;
+            const pi = +document.getElementById('in-P').value || 0;
+            const Pmin = C + pi;
+            const Nmax = Math.max(0, L - Pmin);
+            return { L, C, pi, Pmin, Nmax, dmax: L ? Nmax / L * 100 : 0, mmin: Pmin ? pi / Pmin * 100 : 0 };
+        };
+        const row = (t, m) => {
+            const inv = m.L * (1 - (t.D + t.A) / 100);
+            const net = inv * (1 - t.R / 100);
+            const eff = m.L ? (1 - net / m.L) * 100 : 0;
+            const profit = net - m.C;
+            const margin = net ? profit / net * 100 : 0;
+            const bad = profit < m.pi - 0.5 || eff > m.dmax + 0.005;
+            const near = !bad && m.dmax && eff >= m.dmax * 0.85;
+            return { inv, net, eff, profit, margin, bad, near, nominal: t.D + t.A + t.R };
+        };
+        const slider = (tier, i, key) =>
+            '<td><div class="px-slider"><input type="range" min="0" max="10" step="0.1" value="' + tier[key] +
+            '" data-i="' + i + '" data-k="' + key + '"><div class="val">' + pct(tier[key]) + '</div></div></td>';
+
+        let tiers = DEFAULTS.tiers.map(t => Object.assign({}, t));
+
+        function render() {
+            const m = model();
+            document.getElementById('out-pmin').textContent = vnd(m.Pmin);
+            document.getElementById('out-nmax').textContent = vnd(m.Nmax);
+            document.getElementById('out-dmax').textContent = pct(m.dmax);
+            document.getElementById('out-mmin').textContent = pct(m.mmin);
+
+            let badCount = 0;
+            document.getElementById('px-body').innerHTML = tiers.map((t, i) => {
+                const r = row(t, m);
+                if (r.bad) badCount++;
+                const w = m.dmax ? Math.min(100, r.eff / m.dmax * 100) : 100;
+                return '<tr class="' + (r.bad ? 'bad' : '') + '">' +
+                    '<td>' + (i + 1) + '</td><td class="q">' + t.q + '</td>' +
+                    slider(t, i, 'D') + slider(t, i, 'A') + slider(t, i, 'R') +
+                    '<td>' + pct(r.nominal) + '</td>' +
+                    '<td>' + pct(r.eff) + '<div class="px-bar"><i class="' + (r.bad ? 'hot' : r.near ? 'near' : '') + '" style="width:' + w + '%"></i></div></td>' +
+                    '<td>' + vnd(r.net) + '</td>' +
+                    '<td>' + vnd(r.profit) + '</td>' +
+                    '<td>' + pct(r.margin) + '</td>' +
+                    '<td><span class="px-flag ' + (r.bad ? 'no' : 'ok') + '">' + (r.bad ? 'VI PHẠM' : (r.near ? 'SÁT TRẦN' : 'OK')) + '</span></td>' +
+                    '</tr>';
+            }).join('');
+
+            const alert = document.getElementById('px-alert');
+            alert.classList.toggle('show', badCount > 0);
+            alert.innerHTML = badCount
+                ? badCount + ' bậc vượt ràng buộc: hoặc lãi dưới &pi;<sub>min</sub> (' + vnd(m.pi) + '), hoặc &Delta;<sub>eff</sub> vượt trần ' + pct(m.dmax) + '. Giảm bớt D, A hoặc R.'
+                : '';
+
+            document.querySelectorAll('.px-slider input').forEach(el => {
+                el.addEventListener('input', e => {
+                    const i = +e.target.dataset.i, k = e.target.dataset.k;
+                    tiers[i][k] = +e.target.value;
+                    render();
+                });
+            });
+        }
+
+        ['in-L', 'in-C', 'in-P'].forEach(id =>
+            document.getElementById(id).addEventListener('input', render));
+
+        document.getElementById('px-reset').addEventListener('click', () => {
+            document.getElementById('in-L').value = DEFAULTS.L;
+            document.getElementById('in-C').value = DEFAULTS.C;
+            document.getElementById('in-P').value = DEFAULTS.pi;
+            tiers = DEFAULTS.tiers.map(t => Object.assign({}, t));
+            render();
+        });
+
+        document.getElementById('px-max').addEventListener('click', () => {
+            const m = model();
+            tiers.forEach(t => {
+                const base = 1 - (t.D + t.A) / 100;
+                t.R = base > 0 ? Math.max(0, (1 - m.Pmin / (m.L * base)) * 100) : 0;
+            });
+            render();
+        });
+
+        render();
+    </script>
+</body>
+
+</html>
